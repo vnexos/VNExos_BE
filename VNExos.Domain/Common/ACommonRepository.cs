@@ -55,10 +55,6 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
     public async Task<TEntity?> Update(TEntity entity)
     {
         var existingEntity = await GetById(entity.Id);
-        if (existingEntity == null)
-        {
-            throw new NullReferenceException("existingEntity");
-        }
 
         foreach (var property in typeof(TEntity).GetProperties())
         {
