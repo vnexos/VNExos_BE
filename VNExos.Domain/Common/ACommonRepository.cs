@@ -24,14 +24,14 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
         return entity;
     }
 
-    public async Task<bool> Delete(Guid id)
+    public async Task<TEntity?> Delete(Guid id)
     {
         var entity = await GetById(id);
-        if (entity == null) return false;
+        if (entity == null) return null;
 
         dbSet.Remove(entity);
         await context.SaveChangesAsync();
-        return true;
+        return entity;
     }
 
     public async Task<TEntity?> GetById(Guid id)

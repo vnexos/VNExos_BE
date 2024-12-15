@@ -9,5 +9,9 @@ public class VNExosContext(DbContextOptions<VNExosContext> options) : DbContext(
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Language>()
+            .HasIndex(p => p.Code)
+                .IsUnique(true);
     }
 }

@@ -12,7 +12,7 @@ using VNExos.Domain.Presistence;
 namespace VNExos.API.Migrations
 {
     [DbContext(typeof(VNExosContext))]
-    [Migration("20241214041433_v1")]
+    [Migration("20241215091940_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -45,11 +45,14 @@ namespace VNExos.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("IsDefault")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("RightToLeft")
+                    b.Property<bool?>("RightToLeft")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("UpdatedAt")

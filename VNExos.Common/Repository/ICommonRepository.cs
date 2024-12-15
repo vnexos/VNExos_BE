@@ -10,5 +10,5 @@ public interface ICommonRepository<TEntity>
     Task<TEntity?> GetById(Guid id);
     Task<ICollection<TEntity>> GetAll();
     Task<TEntity?> Update(TEntity entity);
-    Task<bool> Delete(Guid id);
+    Task<TEntity?> Delete(Guid id);
 }

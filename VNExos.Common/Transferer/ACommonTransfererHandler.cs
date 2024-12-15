@@ -15,6 +15,7 @@ public abstract class ACommonTransfererHandler<TEntity, TDto, TTransferer, TRepo
     public async Task<TDto> Create(TTransferer request)
     {
         var entity = mapper.Map<TEntity>(request);
+        entity.CreatedAt = DateTime.UtcNow;
         var result = await repository.Create(entity);
         return mapper.Map<TDto>(result);
     }
@@ -22,6 +23,7 @@ public abstract class ACommonTransfererHandler<TEntity, TDto, TTransferer, TRepo
     public async Task<TDto> Update(TTransferer request)
     {
         var entity = mapper.Map<TEntity>(request);
+        entity.UpdatedAt = DateTime.UtcNow;
         var result = await repository.Update(entity);
         return mapper.Map<TDto>(result);
     }
@@ -32,10 +34,10 @@ public abstract class ACommonTransfererHandler<TEntity, TDto, TTransferer, TRepo
         return mapper.Map<TDto>(result);
     }
 
-    public async Task<bool> Delete(Guid id)
+    public async Task<TDto> Delete(Guid id)
     {
         var result = await repository.Delete(id);
-        return result;
+        return mapper.Map<TDto>(result);
     }
 
     public abstract Task<TDto> Handle(TTransferer request, CancellationToken cancellationToken);

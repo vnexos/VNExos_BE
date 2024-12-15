@@ -6,13 +6,12 @@ namespace VNExos.Domain.Entities;
 public class Language : CommonEntity
 {
     [Required]
-    public required string Code { get; set; }
+    public string? Code { get; set; }
     [Required]
-    public required string Name { get; set; }
+    public string? Name { get; set; }
     [Required]
-    public required string FlagUrl { get; set; }
-    [Required]
-    public required bool RightToLeft { get; set; } = false;
-
+    public string? FlagUrl { get; set; }
+    public bool? IsDefault { get; set; } = false;
+    public bool? RightToLeft { get; set; } = false;
     public string? Description { get; set; }
 }
