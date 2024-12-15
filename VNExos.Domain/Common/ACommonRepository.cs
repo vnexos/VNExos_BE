@@ -57,13 +57,13 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
         var existingEntity = await GetById(entity.Id);
         if (existingEntity == null)
         {
-            throw new Exception("Entity not found");
+            throw new NullReferenceException("existingEntity");
         }
 
         foreach (var property in typeof(TEntity).GetProperties())
         {
             var newValue = property.GetValue(entity);
-            if (newValue != null && newValue?.ToString() != Guid.Empty.ToString())
+            if (newValue != null && newValue.ToString() != Guid.Empty.ToString())
             {
                 Console.WriteLine(newValue);
                 property.SetValue(existingEntity, newValue);

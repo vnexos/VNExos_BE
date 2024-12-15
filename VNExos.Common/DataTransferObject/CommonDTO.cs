@@ -4,4 +4,5 @@ namespace VNExos.Common.DataTransferObject;
 
 public class CommonDTO : CommonEntity
 {
+    // Nothing to do
 }

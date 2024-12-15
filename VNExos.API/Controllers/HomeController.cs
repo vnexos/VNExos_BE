@@ -6,9 +6,10 @@ namespace VNExos.API.Controllers;
 
 [Route("/")]
 [ApiController]
-public class HomeController : Controller
+public class HomeController : ControllerBase
 {
     [SwaggerIgnore]
+    [HttpGet]
     public IActionResult Index()
     {
         return ApiResponse<string>.CreateOk("{\"message\": \"Hello World\"}");

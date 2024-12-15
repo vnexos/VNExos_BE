@@ -6,7 +6,6 @@ public static class SwaggerExtension
 {
     public static void AddSwagger(this WebApplicationBuilder builder)
     {
-        var excludeEndpoints = new List<string> { "api/users/login", "api/users/register", "api/languages" };
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "VNExos API", Version = "v2" });
@@ -30,7 +29,7 @@ public static class SwaggerExtension
                     {
                         Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "token"}
                     },
-                    new string[] { }
+                    []
                 }
             });
         });
