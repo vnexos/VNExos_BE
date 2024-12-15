@@ -19,7 +19,8 @@ namespace VNExos.API.Migrations
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FlagUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RightToLeft = table.Column<bool>(type: "bit", nullable: false),
+                    IsDefault = table.Column<bool>(type: "bit", nullable: true),
+                    RightToLeft = table.Column<bool>(type: "bit", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)

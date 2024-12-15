@@ -14,4 +14,6 @@ public abstract class ALanguageRepository : ACommonRepository<Language>
     protected ALanguageRepository(VNExosContext context) : base(context)
     {
     }
+
+    public abstract Task<Language?> GetByCode(string code);
 }

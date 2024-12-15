@@ -371,3 +371,5 @@ suo
 
 .vscode
 .vs
+appsettings.Development.json
+appsettings.json
