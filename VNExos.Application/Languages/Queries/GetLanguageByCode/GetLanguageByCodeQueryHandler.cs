@@ -11,11 +11,20 @@ using VNExos.Domain.Repositories;
 
 namespace VNExos.Application.Languages.Queries.GetLanguageByCode;
 
-public class GetLanguageByCodeQueryHandler(IMapper mapper, ALanguageRepository repository) : ACommonTransfererHandler<Language, LanguageDto, GetLanguageByCodeQuery, ALanguageRepository>(mapper, repository)
+public class GetLanguageByCodeQueryHandler
+    : ACommonTransfererHandler<Language, LanguageDto, GetLanguageByCodeQuery, ALanguageRepository>
 {
+    private readonly ALanguageRepository _languageRepository;
+    private readonly IMapper _mapper;
+    public GetLanguageByCodeQueryHandler(IMapper mapper, ALanguageRepository repository) : base(mapper, repository)
+    {
+        _languageRepository = repository;
+        _mapper = mapper;
+    }
+
     public override async Task<LanguageDto> Handle(GetLanguageByCodeQuery request, CancellationToken cancellationToken)
     {
-        var res = await repository.GetByCode(request.Code);
-        return mapper.Map<LanguageDto>(res);
+        var res = await _languageRepository.GetByCode(request.Code);
+        return _mapper.Map<LanguageDto>(res);
     }
 }

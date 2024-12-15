@@ -4,8 +4,8 @@ namespace VNExos.API.Helpers;
 
 public class ApiResponse<TKey> : IActionResult
 {
-    private int Status;
-    private TKey? Data;
+    private readonly int Status;
+    private readonly TKey? Data;
 
     public ApiResponse(int Status, TKey? Data)
     {
