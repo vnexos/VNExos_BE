@@ -66,7 +66,7 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
             }
         }
 
-        context.Entry(existingEntity).State = EntityState.Modified;
+        context.Entry(existingEntity!).State = EntityState.Modified;
         await context.SaveChangesAsync();
         return existingEntity;
     }
