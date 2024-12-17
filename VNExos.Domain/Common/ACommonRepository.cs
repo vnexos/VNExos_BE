@@ -55,22 +55,18 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
     public async Task<TEntity?> Update(TEntity entity)
     {
         var existingEntity = await GetById(entity.Id);
-        if (existingEntity == null)
-        {
-            throw new Exception("Entity not found");
-        }
 
         foreach (var property in typeof(TEntity).GetProperties())
         {
             var newValue = property.GetValue(entity);
-            if (newValue != null && newValue?.ToString() != Guid.Empty.ToString())
+            if (newValue != null && newValue.ToString() != Guid.Empty.ToString())
             {
                 Console.WriteLine(newValue);
                 property.SetValue(existingEntity, newValue);
             }
         }
 
-        context.Entry(existingEntity).State = EntityState.Modified;
+        context.Entry(existingEntity!).State = EntityState.Modified;
         await context.SaveChangesAsync();
         return existingEntity;
     }
