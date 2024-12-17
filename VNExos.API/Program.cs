@@ -2,7 +2,9 @@ using VNExos.API.Extensions;
 using VNExos.Application.Extensions;
 using VNExos.Infrastructure.Extensions;
 
-class Program
+namespace VNExos.API;
+
+public static class Program
 {
     public static async Task Main(string[] args)
     {
