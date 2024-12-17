@@ -6,7 +6,7 @@ namespace VNExos.Common.Transferer;
 
 public class CommonProfile<TEntity, TDto> : Profile
     where TEntity : CommonEntity
-    where TDto : CommonDTO
+    where TDto : CommonDto
 {
     public CommonProfile()
     {
@@ -15,7 +15,7 @@ public class CommonProfile<TEntity, TDto> : Profile
 }
 public class CommonProfile<TEntity, TDto, TTransferer1> : Profile
     where TEntity : CommonEntity
-    where TDto : CommonDTO
+    where TDto : CommonDto
     where TTransferer1 : CommonTransferer<TDto>
 {
     public CommonProfile()
@@ -26,7 +26,7 @@ public class CommonProfile<TEntity, TDto, TTransferer1> : Profile
 }
 public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2> : Profile
     where TEntity : CommonEntity
-    where TDto : CommonDTO
+    where TDto : CommonDto
     where TTransferer1 : CommonTransferer<TDto>
     where TTransferer2 : CommonTransferer<TDto>
 {
@@ -40,7 +40,7 @@ public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2> : Profile
 
 public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2, TTransferer3> : Profile
     where TEntity : CommonEntity
-    where TDto : CommonDTO
+    where TDto : CommonDto
     where TTransferer1 : CommonTransferer<TDto>
     where TTransferer2 : CommonTransferer<TDto>
     where TTransferer3 : CommonTransferer<TDto>
@@ -55,7 +55,7 @@ public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2, TTransfere
 }
 public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2, TTransferer3, TTransferer4> : Profile
     where TEntity : CommonEntity
-    where TDto : CommonDTO
+    where TDto : CommonDto
     where TTransferer1 : CommonTransferer<TDto>
     where TTransferer2 : CommonTransferer<TDto>
     where TTransferer3 : CommonTransferer<TDto>

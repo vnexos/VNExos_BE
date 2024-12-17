@@ -2,26 +2,34 @@ using VNExos.API.Extensions;
 using VNExos.Application.Extensions;
 using VNExos.Infrastructure.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace VNExos.API;
 
-// Add extensions
-builder.AddPresentation();
-builder.AddSwagger();
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+public static class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    public static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-app.UseHttpsRedirection();
+        // Add extensions
+        builder.AddPresentation();
+        builder.AddSwagger();
+        builder.Services.AddApplication();
+        builder.Services.AddInfrastructure(builder.Configuration);
 
-app.UseAuthorization();
+        var app = builder.Build();
 
-app.MapControllers();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
 
-app.Run();
+        app.UseHttpsRedirection();
+
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        await app.RunAsync();
+    }
+};

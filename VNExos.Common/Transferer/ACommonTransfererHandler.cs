@@ -8,7 +8,7 @@ namespace VNExos.Common.Transferer;
 
 public abstract class ACommonTransfererHandler<TEntity, TDto, TTransferer, TRepos>(IMapper mapper, TRepos repository) : IRequestHandler<TTransferer, TDto>
     where TEntity : CommonEntity
-    where TDto : CommonDTO
+    where TDto : CommonDto
     where TTransferer : CommonTransferer<TDto>
     where TRepos : ICommonRepository<TEntity>
 {

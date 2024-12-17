@@ -2,7 +2,7 @@
 
 namespace VNExos.Common.DataTransferObject;
 
-public class CommonDTO : CommonEntity
+public class CommonDto : CommonEntity
 {
     // Nothing to do
 }
