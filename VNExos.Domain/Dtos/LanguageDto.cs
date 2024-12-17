@@ -3,7 +3,7 @@ using VNExos.Common.DataTransferObject;
 
 namespace VNExos.Domain.Dtos;
 
-public class LanguageDto : CommonDTO
+public class LanguageDto : CommonDto
 {
     public string? Code { get; set; }
     public string? Name { get; set; }
