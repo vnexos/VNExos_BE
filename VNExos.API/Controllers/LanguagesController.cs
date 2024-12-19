@@ -13,7 +13,7 @@ namespace VNExos.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class LanguagesController (IMediator mediator) : CommonController<LanguageDto>
+public class LanguagesController (IMediator mediator) : CommonController<LanguageDto>(mediator)
 {
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] GetAllLanguagesQuery request)
