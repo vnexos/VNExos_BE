@@ -15,7 +15,7 @@ public class LanguageRepositoryTests
 
         var databaseContext = new VNExosContext(options);
         databaseContext.Database.EnsureCreated();
-        if (await databaseContext.Languages.CountAsync() <= 0)
+        if (!await databaseContext.Languages.AnyAsync())
         {
             var codeArr = new[]
             {
@@ -38,7 +38,7 @@ public class LanguageRepositoryTests
             {
                 false, false, false, false, false, true, true, false, false, false
             };
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 databaseContext.Languages.Add(new Language
                 {
