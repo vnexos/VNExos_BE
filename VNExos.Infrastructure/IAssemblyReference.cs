@@ -1,5 +1,5 @@
 ﻿namespace VNExos.Infrastructure;
 
-public interface AssemblyReference
+public interface IAssemblyReference
 {
 }
