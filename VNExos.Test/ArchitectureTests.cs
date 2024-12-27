@@ -14,7 +14,7 @@ public class ArchitectureTests
     public void Common_ShouldNot_HaveDependencyOnOtherProject()
     {
         // Arrange
-        var assembly = typeof(VNExos.Common.AssemblyReference).Assembly;
+        var assembly = typeof(VNExos.Common.IAssemblyReference).Assembly;
 
         var otherProject = new[]
         {
@@ -37,7 +37,7 @@ public class ArchitectureTests
     public void Domain_ShouldNot_HaveDependencyOnOtherProject_Except_CommonProject()
     {
         // Arrange
-        var assembly = typeof(VNExos.Domain.AssemblyReference).Assembly;
+        var assembly = typeof(VNExos.Domain.IAssemblyReference).Assembly;
 
         var otherProject = new[]
         {
@@ -60,7 +60,7 @@ public class ArchitectureTests
     public void Application_ShouldNot_HaveDependencyOnInfrastructureProjectAndApiProject()
     {
         // Arrange
-        var assembly = typeof(VNExos.Application.AssemblyReference).Assembly;
+        var assembly = typeof(VNExos.Application.IAssemblyReference).Assembly;
 
         var targetProjects = new[]
         {
@@ -82,7 +82,7 @@ public class ArchitectureTests
     public void Infrastructure_Should_HaveDependencyOnDomainOnly()
     {
         // Arrange
-        var assembly = typeof(VNExos.Infrastructure.AssemblyReference).Assembly;
+        var assembly = typeof(VNExos.Infrastructure.IAssemblyReference).Assembly;
 
         var targetProjects = new[]
         {
@@ -104,12 +104,7 @@ public class ArchitectureTests
     public void InfrastructureClasses_Should_BeInternal()
     {
         // Arrange
-        var assembly = typeof(VNExos.Infrastructure.AssemblyReference).Assembly;
-
-        var targetClassname = new[]
-        {
-            "AssemblyReference", "InfrastructureExtension"
-        };
+        var assembly = typeof(VNExos.Infrastructure.IAssemblyReference).Assembly;
 
         // Act
         var testResult = Types
@@ -117,7 +112,7 @@ public class ArchitectureTests
             .That()
             .ArePublic()
             .Should()
-            .HaveName("AssemblyReference")
+            .HaveName("IAssemblyReference")
             .Or()
             .HaveName("InfrastructureExtension")
             .GetResult();

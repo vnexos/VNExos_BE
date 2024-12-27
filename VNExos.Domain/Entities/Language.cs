@@ -6,8 +6,10 @@ namespace VNExos.Domain.Entities;
 public class Language : CommonEntity
 {
     [Required]
+    [MaxLength(4)]
     public string? Code { get; set; }
     [Required]
+    [MaxLength(100)]
     public string? Name { get; set; }
     [Required]
     public string? FlagUrl { get; set; }
