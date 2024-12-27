@@ -1,5 +1,5 @@
 ﻿namespace VNExos.Common;
 
-public class AssemblyReference
+public interface AssemblyReference
 {
 }

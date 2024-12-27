@@ -1,5 +1,5 @@
 ﻿namespace VNExos.Domain;
 
-public class AssemblyReference
+public interface AssemblyReference
 {
 }
