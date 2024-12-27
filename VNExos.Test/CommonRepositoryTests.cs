@@ -1,71 +1,17 @@
 ﻿using VNExos.Domain.Common;
 using VNExos.Domain.Entities;
-using VNExos.Domain.Presistence;
 using VNExos.Infrastructure.Repositories;
+using VNExos.Test.Repository;
 
 namespace VNExos.Test;
 
 public class CommonRepositoryTests
 {
-    private async Task<VNExosContext> GetContext()
-    {
-        var options = new DbContextOptionsBuilder<VNExosContext>()
-            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
-            .Options;
-
-        var databaseContext = new VNExosContext(options);
-        databaseContext.Database.EnsureCreated();
-        if (await databaseContext.Languages.CountAsync() <= 0)
-        {
-            var codeArr = new[]
-            {
-                "vi-vn", "en-us", "en-uk", "zh-cn", "ja-jp", "ar-sa", "he-il", "tr-tr", "th-th", "ko-kr"
-            };
-            var nameArr = new[]
-            {
-                "Tiếng Việt",
-                "English (United States)",
-                "English (United Kingdom)",
-                "简体中文",
-                "日本語",
-                "اَلْعَرَبِيَّةُ",
-                "עברית",
-                "Türkçe",
-                "ภาษาไทย",
-                "한국어"
-            };
-            var rtl = new[]
-            {
-                false, false, false, false, false, true, true, false, false, false
-            };
-            for (int i = 0; i < 5; i++)
-            {
-                databaseContext.Languages.Add(new Language
-                {
-                    Code = codeArr[i],
-                    Name = nameArr[i],
-                    FlagUrl = "https://vnexos.com/flags/ex-ex.png",
-                    RightToLeft = rtl[i],
-                });
-            }
-            databaseContext.Languages.Add(new Language
-            {
-                Id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b"),
-                Code = "vi-us",
-                Name = "Tchiếng Dziệt (Mỹỷ)",
-                FlagUrl = "https://vnexos.com/flags/ex-ex.png",
-                RightToLeft = true,
-            });
-            await databaseContext.SaveChangesAsync();
-        }
-        return databaseContext;
-    }
-
     [Fact]
     public async void Create_Should_ReturnEntity_And_SaveARecordToData()
     {
         // Arrange
-        var dbContext = await GetContext();
+        var dbContext = await LanguageRepositoryTests.GetContext();
         ACommonRepository<Language> repository = new LanguageRepository(dbContext);
         var sample = new Language
         {
@@ -88,7 +34,7 @@ public class CommonRepositoryTests
     {
         // Arrange
         var id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b");
-        var dbContext = await GetContext();
+        var dbContext = await LanguageRepositoryTests.GetContext();
         ACommonRepository<Language> repository = new LanguageRepository(dbContext);
 
         // Act
@@ -105,7 +51,7 @@ public class CommonRepositoryTests
     {
         // Arrange
         var id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b");
-        var dbContext = await GetContext();
+        var dbContext = await LanguageRepositoryTests.GetContext();
         ACommonRepository<Language> repository = new LanguageRepository(dbContext);
 
         // Act
@@ -128,7 +74,7 @@ public class CommonRepositoryTests
     {
         // Arrange
         var id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b");
-        var dbContext = await GetContext();
+        var dbContext = await LanguageRepositoryTests.GetContext();
         ACommonRepository<Language> repository = new LanguageRepository(dbContext);
         var entity = new Language
         {
@@ -167,7 +113,7 @@ public class CommonRepositoryTests
     {
         // Arrange
         var id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b");
-        var dbContext = await GetContext();
+        var dbContext = await LanguageRepositoryTests.GetContext();
         ACommonRepository<Language> repository = new LanguageRepository(dbContext);
 
         // Act

@@ -7,7 +7,7 @@ namespace VNExos.Test.Repository;
 
 public class LanguageRepositoryTests
 {
-    private async Task<VNExosContext> GetContext()
+    public static async Task<VNExosContext> GetContext()
     {
         var options = new DbContextOptionsBuilder<VNExosContext>()
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
@@ -15,7 +15,7 @@ public class LanguageRepositoryTests
 
         var databaseContext = new VNExosContext(options);
         databaseContext.Database.EnsureCreated();
-        if(await databaseContext.Languages.CountAsync() <= 0 )
+        if (await databaseContext.Languages.CountAsync() <= 0)
         {
             var codeArr = new[]
             {
@@ -48,6 +48,14 @@ public class LanguageRepositoryTests
                     RightToLeft = rtl[i],
                 });
             }
+            databaseContext.Languages.Add(new Language
+            {
+                Id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b"),
+                Code = "vi-us",
+                Name = "Tchiếng Dziệt (Mỹỷ)",
+                FlagUrl = "https://vnexos.com/flags/ex-ex.png",
+                RightToLeft = true,
+            });
             await databaseContext.SaveChangesAsync();
         }
         return databaseContext;
