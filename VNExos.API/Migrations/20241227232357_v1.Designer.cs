@@ -12,7 +12,7 @@ using VNExos.Domain.Presistence;
 namespace VNExos.API.Migrations
 {
     [DbContext(typeof(VNExosContext))]
-    [Migration("20241215091940_v1")]
+    [Migration("20241227232357_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -33,7 +33,8 @@ namespace VNExos.API.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -50,7 +51,8 @@ namespace VNExos.API.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool?>("RightToLeft")
                         .HasColumnType("bit");
@@ -59,6 +61,9 @@ namespace VNExos.API.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.ToTable("Languages");
                 });

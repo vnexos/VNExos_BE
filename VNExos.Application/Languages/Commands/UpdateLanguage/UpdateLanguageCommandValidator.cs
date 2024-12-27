@@ -12,7 +12,7 @@ public class UpdateLanguageCommandValidator : AbstractValidator<UpdateLanguageCo
                 .When(lang => lang.Code != null);
 
         RuleFor(lang => lang.FlagUrl)
-            .Matches("^(https?:\\/\\/)?([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,6}(\\/[a-zA-Z0-9\\-._~:/?#[\\]@!$&'()*+,;=]*)?$")
+            .Matches("^(https?:\\/\\/)?([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,6}(\\/[a-zA-Z0-9\\-._~:/?#[\\]@!$&'()*+,;=%]*)?$")
                 .WithMessage("LANGUAGE_FLAG_NOT_VALID")
                 .When(lang => lang.FlagUrl != null);
     }
