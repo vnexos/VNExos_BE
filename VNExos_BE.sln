@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNExos.Application", "VNExo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNExos.Infrastructure", "VNExos.Infrastructure\VNExos.Infrastructure.csproj", "{009FEFD1-2062-49CB-833B-3C18FF9FEF56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNExos.Common", "VNExos.Common\VNExos.Common.csproj", "{E3AF59A1-CE26-49E3-94B5-EEECAC4B9B3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNExos.Common", "VNExos.Common\VNExos.Common.csproj", "{E3AF59A1-CE26-49E3-94B5-EEECAC4B9B3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNExos.Test", "VNExos.Test\VNExos.Test.csproj", "{F9145B61-D6A0-4408-8390-412933605049}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E3AF59A1-CE26-49E3-94B5-EEECAC4B9B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3AF59A1-CE26-49E3-94B5-EEECAC4B9B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3AF59A1-CE26-49E3-94B5-EEECAC4B9B3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9145B61-D6A0-4408-8390-412933605049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9145B61-D6A0-4408-8390-412933605049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9145B61-D6A0-4408-8390-412933605049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9145B61-D6A0-4408-8390-412933605049}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

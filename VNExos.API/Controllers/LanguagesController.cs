@@ -30,6 +30,7 @@ public class LanguagesController (IMediator mediator) : CommonController<Languag
     [HttpPatch("{id:guid}")]
     public async Task<IActionResult> Patch([FromRoute] Guid id, [FromBody] UpdateLanguageCommand request)
     {
+        request.Id = id;
         return await Execute(request);
     }
 
