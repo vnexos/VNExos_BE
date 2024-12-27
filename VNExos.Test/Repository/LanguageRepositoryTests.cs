@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using VNExos.Domain.Entities;
+﻿using VNExos.Domain.Entities;
 using VNExos.Domain.Presistence;
 using VNExos.Domain.Repositories;
 using VNExos.Infrastructure.Repositories;

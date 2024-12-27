@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VNExos.Common.Transferer;
 using VNExos.Domain.Dtos;
 using VNExos.Domain.Entities;
