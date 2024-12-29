@@ -19,7 +19,7 @@ public class CreateLanguageCommandValidator : AbstractValidator<CreateLanguageCo
         RuleFor(lang => lang.FlagUrl)
             .NotEmpty()
                 .WithMessage("LANGUAGE_FLAG_EMPTY")
-            .Matches("^(https?:\\/\\/)?([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,6}(\\/[a-zA-Z0-9\\-._~:/?#[\\]@!$&'()*+,;=]*)?$")
+            .Matches("^(https?:\\/\\/)?([a-zA-Z0-9\\-]+\\.)+[a-zA-Z]{2,6}(\\/[a-zA-Z0-9\\-._~:/?#[\\]@!$&'()*+,;=%]*)?$")
                 .WithMessage("LANGUAGE_FLAG_NOT_VALID");
     }
 }

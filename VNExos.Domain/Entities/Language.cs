@@ -6,7 +6,7 @@ namespace VNExos.Domain.Entities;
 public class Language : CommonEntity
 {
     [Required]
-    [MaxLength(4)]
+    [MaxLength(10)]
     public string? Code { get; set; }
     [Required]
     [MaxLength(100)]
