@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using VNExos.API.Helpers;
 using VNExos.Application.Translations.Commands.CreateTranslationsByLanguageCode;
 using VNExos.Application.Translations.Commands.CreateTranslationsByOrigin;
+using VNExos.Application.Translations.Commands.DeleteTranslation;
 using VNExos.Application.Translations.Commands.UpdateTranslationByCodeAndOrigin;
 using VNExos.Application.Translations.Commands.UpdateTranslationById;
 using VNExos.Domain.Dtos;
@@ -41,5 +42,11 @@ public class TranslationsController(IMediator mediator) : CommonController<Trans
     {
         request.Id = id;
         return await Execute(request);
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteTranslation([FromRoute] Guid id)
+    {
+        return await Execute(new DeleteTranslationCommand { Id = id });
     }
 }
