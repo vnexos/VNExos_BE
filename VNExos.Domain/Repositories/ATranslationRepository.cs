@@ -11,4 +11,5 @@ public abstract class ATranslationRepository : ACommonRepository<Translation>
     }
 
     public abstract Task<ICollection<Translation>> CreateTranslations(ICollection<Translation> translations);
+    public abstract Task<Translation?> UpdateTranslationsByCodeAndOrigin(string code, string origin, Translation translation);
 }

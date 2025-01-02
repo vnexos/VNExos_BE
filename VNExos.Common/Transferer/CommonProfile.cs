@@ -21,6 +21,7 @@ public class CommonProfile<TEntity, TDto, TTransferer1> : Profile
     public CommonProfile()
     {
         CreateMap<TTransferer1, TEntity>();
+        CreateMap<TEntity, TTransferer1>();
         CreateMap<TEntity, TDto>();
     }
 }
@@ -33,7 +34,9 @@ public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2> : Profile
     public CommonProfile()
     {
         CreateMap<TTransferer1, TEntity>();
+        CreateMap<TEntity, TTransferer1>();
         CreateMap<TTransferer2, TEntity>();
+        CreateMap<TEntity, TTransferer2>();
         CreateMap<TEntity, TDto>();
     }
 }
@@ -48,8 +51,11 @@ public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2, TTransfere
     public CommonProfile()
     {
         CreateMap<TTransferer1, TEntity>();
+        CreateMap<TEntity, TTransferer1>();
         CreateMap<TTransferer2, TEntity>();
+        CreateMap<TEntity, TTransferer2>();
         CreateMap<TTransferer3, TEntity>();
+        CreateMap<TEntity, TTransferer3>();
         CreateMap<TEntity, TDto>();
     }
 }
@@ -64,9 +70,13 @@ public class CommonProfile<TEntity, TDto, TTransferer1, TTransferer2, TTransfere
     public CommonProfile()
     {
         CreateMap<TTransferer1, TEntity>();
+        CreateMap<TEntity, TTransferer1>();
         CreateMap<TTransferer2, TEntity>();
+        CreateMap<TEntity, TTransferer2>();
         CreateMap<TTransferer3, TEntity>();
+        CreateMap<TEntity, TTransferer3>();
         CreateMap<TTransferer4, TEntity>();
+        CreateMap<TEntity, TTransferer4>();
         CreateMap<TEntity, TDto>();
     }
 }

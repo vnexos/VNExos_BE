@@ -19,6 +19,7 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
 
     public async Task<TEntity> Create(TEntity entity)
     {
+        entity.CreatedAt = DateTime.UtcNow;
         await dbSet.AddAsync(entity);
         await context.SaveChangesAsync();
         return entity;
@@ -52,23 +53,33 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
         return dbSet;
     }
 
+    protected async Task<TEntity?> UpdateFromEntity(TEntity entity, TEntity newEntity)
+    {
+        foreach (var property in typeof(TEntity).GetProperties())
+        {
+            var newValue = property.GetValue(newEntity);
+            if (newValue != null && newValue.ToString() != Guid.Empty.ToString())
+            {
+                Console.WriteLine(newValue);
+                property.SetValue(entity, newValue);
+            }
+        }
+
+        entity.UpdatedAt = DateTime.UtcNow;
+        context.Entry(entity!).State = EntityState.Modified;
+        await context.SaveChangesAsync();
+        return entity;
+    }
+
     public async Task<TEntity?> Update(TEntity entity)
     {
         var existingEntity = await GetById(entity.Id);
 
-        foreach (var property in typeof(TEntity).GetProperties())
-        {
-            var newValue = property.GetValue(entity);
-            if (newValue != null && newValue.ToString() != Guid.Empty.ToString())
-            {
-                Console.WriteLine(newValue);
-                property.SetValue(existingEntity, newValue);
-            }
-        }
+        TEntity? res = null;
+        if (existingEntity != null)
+            res = await UpdateFromEntity(existingEntity, entity);
 
-        context.Entry(existingEntity!).State = EntityState.Modified;
-        await context.SaveChangesAsync();
-        return existingEntity;
+        return res;
     }
 
     public async Task<ICollection<TEntity>> GetAll()
