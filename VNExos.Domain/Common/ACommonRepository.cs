@@ -19,7 +19,7 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
 
     public async Task<TEntity> Create(TEntity entity)
     {
-        dbSet.Add(entity);
+        await dbSet.AddAsync(entity);
         await context.SaveChangesAsync();
         return entity;
     }
@@ -43,11 +43,11 @@ public class ACommonRepository<TEntity> : ICommonRepository<TEntity>
         return res;
     }
 
-    protected DbSet<TEntity> GetByIdCondition()
+    protected virtual DbSet<TEntity> GetByIdCondition()
     {
         return dbSet;
     }
-    protected DbSet<TEntity> GetAllCondition()
+    protected virtual DbSet<TEntity> GetAllCondition()
     {
         return dbSet;
     }

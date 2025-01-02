@@ -22,5 +22,6 @@ public static class InfrastructureExtension
         );
 
         services.AddScoped<ALanguageRepository, LanguageRepository>();
+        services.AddScoped<ATranslationRepository, TranslationRepository>();
     }
 }

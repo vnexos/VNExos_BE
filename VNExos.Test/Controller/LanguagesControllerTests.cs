@@ -11,11 +11,12 @@ using VNExos.Domain.Dtos;
 
 namespace VNExos.Test.Controller;
 
-public class LanguageControllerTests
+// Test Languages controller
+public class LanguagesControllerTests
 {
     private readonly IMediator _mediator;
     private readonly LanguagesController _controller;
-    public LanguageControllerTests() 
+    public LanguagesControllerTests() 
     {
         _mediator = A.Fake<IMediator>();
         _controller = new LanguagesController(_mediator);

@@ -11,4 +11,5 @@ public abstract class ALanguageRepository : ACommonRepository<Language>
     }
 
     public abstract Task<Language?> GetByCode(string code);
+    public abstract Task<ICollection<Language>> GetByCodeRange(ICollection<string> codes);
 }
