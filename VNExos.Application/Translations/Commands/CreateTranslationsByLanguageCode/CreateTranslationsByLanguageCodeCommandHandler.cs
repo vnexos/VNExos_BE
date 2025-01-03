@@ -7,12 +7,19 @@ using VNExos.Domain.Repositories;
 
 namespace VNExos.Application.Translations.Commands.CreateTranslationsByLanguageCode;
 
-public class CreateTranslationsByLanguageCodeCommandHandler(IMapper mapper, ATranslationRepository repository, ALanguageRepository languageRepository)
-        : ACommonListTransfererHandler<Translation, TranslationDto, CreateTranslationsByLanguageCodeCommand, ATranslationRepository>(mapper, repository)
+public class CreateTranslationsByLanguageCodeCommandHandler
+        : ACommonListTransfererHandler<Translation, TranslationDto, CreateTranslationsByLanguageCodeCommand, ATranslationRepository>
 {
-    private readonly IMapper _mapper = mapper;
-    private readonly ATranslationRepository _translationRepository = repository;
-    private readonly ALanguageRepository _languageRepository = languageRepository;
+    private readonly IMapper _mapper;
+    private readonly ATranslationRepository _translationRepository;
+    private readonly ALanguageRepository _languageRepository;
+
+    public CreateTranslationsByLanguageCodeCommandHandler(IMapper mapper, ATranslationRepository repository, ALanguageRepository languageRepository) : base(mapper, repository)
+    {
+        _mapper = mapper;
+        _languageRepository = languageRepository;
+        _translationRepository = repository;
+    }
 
     public async override Task<ICollection<TranslationDto>> Handle(CreateTranslationsByLanguageCodeCommand request, CancellationToken cancellationToken)
     {
@@ -27,6 +34,6 @@ public class CreateTranslationsByLanguageCodeCommandHandler(IMapper mapper, ATra
             else
                 failed.Add(new Translation { LanguageId = Guid.Empty, Origin = requestOrigin, Translate = requestTransate });
         }
-        return await CreateTranslations.CreateTranslation(_translationRepository, mapper, translations, failed);
+        return await CreateTranslations.CreateTranslation(_translationRepository, _mapper, translations, failed);
     }
 }
