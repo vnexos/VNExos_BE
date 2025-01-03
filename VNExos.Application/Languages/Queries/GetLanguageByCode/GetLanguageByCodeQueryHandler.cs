@@ -19,7 +19,9 @@ public class GetLanguageByCodeQueryHandler
 
     public override async Task<LanguageDto> Handle(GetLanguageByCodeQuery request, CancellationToken cancellationToken)
     {
-        var res = await _languageRepository.GetByCode(request.Code);
-        return _mapper.Map<LanguageDto>(res);
+        var language = await _languageRepository.GetByCode(request.Code);
+        var res = _mapper.Map<LanguageDto>(language);
+
+        return res;
     }
 }

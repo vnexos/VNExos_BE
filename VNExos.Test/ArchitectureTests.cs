@@ -2,6 +2,7 @@ using NetArchTest.Rules;
 
 namespace VNExos.Test;
 
+// Ensure that the architecture of the project follow the Clean Architecture pattern
 public class ArchitectureTests
 {
     private const string APINamespace = "VNExos.API";

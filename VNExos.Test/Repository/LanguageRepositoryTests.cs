@@ -5,6 +5,7 @@ using VNExos.Infrastructure.Repositories;
 
 namespace VNExos.Test.Repository;
 
+// Test the language repository
 public class LanguageRepositoryTests
 {
     public static async Task<VNExosContext> GetContext()

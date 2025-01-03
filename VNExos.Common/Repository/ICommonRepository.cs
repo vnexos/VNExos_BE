@@ -3,6 +3,7 @@ using VNExos.Common.Entity;
 
 namespace VNExos.Common.Repository;
 
+// Common Interface for Repositories
 public interface ICommonRepository<TEntity>
     where TEntity : CommonEntity
 {

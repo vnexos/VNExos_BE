@@ -2,6 +2,7 @@
 
 namespace VNExos.Common.Entity;
 
+// Common entity
 public class CommonEntity
 {
     [Key]

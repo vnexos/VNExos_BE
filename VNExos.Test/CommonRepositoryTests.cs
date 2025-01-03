@@ -5,6 +5,7 @@ using VNExos.Test.Repository;
 
 namespace VNExos.Test;
 
+// Use language for testing the common library
 public class CommonRepositoryTests
 {
     [Fact]
