@@ -5,7 +5,7 @@ using VNExos.Domain.Repositories;
 
 namespace VNExos.Application.Translations.Dtos;
 
-internal class CreateTranslations
+internal static class CreateTranslations
 {
     public static async Task<ICollection<TranslationDto>> CreateTranslation(ATranslationRepository rep, IMapper mapper, ICollection<Translation> trans, ICollection<Translation> failed)
     {

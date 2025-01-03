@@ -5,9 +5,8 @@ using VNExos.Domain.Repositories;
 
 namespace VNExos.Infrastructure.Repositories;
 
-internal class TranslationRepository(VNExosContext context, ALanguageRepository languageRepository) : ATranslationRepository(context)
+internal class TranslationRepository(VNExosContext context) : ATranslationRepository(context)
 {
-    private readonly ALanguageRepository _languageRepository = languageRepository;
     public override async Task<ICollection<Translation>> CreateTranslations(ICollection<Translation> translations)
     {
         await dbSet.AddRangeAsync(translations);

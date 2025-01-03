@@ -6,7 +6,7 @@ namespace VNExos.Domain.Repositories;
 
 public abstract class ATranslationRepository : ACommonRepository<Translation>
 {
-    public ATranslationRepository(VNExosContext context) : base(context)
+    protected ATranslationRepository(VNExosContext context) : base(context)
     {
     }
 
