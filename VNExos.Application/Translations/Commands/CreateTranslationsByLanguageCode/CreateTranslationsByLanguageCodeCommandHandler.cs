@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using VNExos.Application.Translations.Dtos;
 using VNExos.Common.Transferer;
 using VNExos.Domain.Dtos;
 using VNExos.Domain.Entities;
@@ -19,16 +20,13 @@ public class CreateTranslationsByLanguageCodeCommandHandler(IMapper mapper, ATra
         var language = await _languageRepository.GetByCode(code!);
         var failed = new List<Translation>();
         var translations = new List<Translation>();
-        foreach (var (origin, transate) in request.Translations)
+        foreach (var (requestOrigin, requestTransate) in request.Translations)
         {
             if(language != null)
-                translations.Add(new Translation { LanguageId = language!.Id, Origin = origin, Translate = transate, CreatedAt = DateTime.UtcNow });
+                translations.Add(new Translation { LanguageId = language!.Id, Origin = requestOrigin, Translate = requestTransate, CreatedAt = DateTime.UtcNow });
             else
-                failed.Add(new Translation { LanguageId = Guid.Empty, Origin = origin, Translate = transate });
+                failed.Add(new Translation { LanguageId = Guid.Empty, Origin = requestOrigin, Translate = requestTransate });
         }
-        var result = await _translationRepository.CreateTranslations(translations);
-        foreach (var f in failed)
-            result.Add(f);
-        return _mapper.Map<ICollection<TranslationDto>>(result);
+        return await CreateTranslations.CreateTranslation(_translationRepository, mapper, translations, failed);
     }
 }

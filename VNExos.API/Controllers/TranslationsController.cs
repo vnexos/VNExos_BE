@@ -22,7 +22,7 @@ public class TranslationsController(IMediator mediator) : CommonController<Trans
     }
 
     [HttpPost("origin/{origin}")]
-    public async Task<IActionResult> CreateByLanguage([FromRoute] string origin, [FromBody] CreateTranslationsByOriginCommand request)
+    public async Task<IActionResult> CreateByOrigin([FromRoute] string origin, [FromBody] CreateTranslationsByOriginCommand request)
     {
         request.Origin = origin;
         return await Execute(request);
