@@ -16,4 +16,6 @@ public class Language : CommonEntity
     public bool? IsDefault { get; set; } = false;
     public bool? RightToLeft { get; set; } = false;
     public string? Description { get; set; }
+
+    public ICollection<Translation> Translations { get; set; } = new List<Translation>();
 }

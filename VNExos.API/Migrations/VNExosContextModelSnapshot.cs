@@ -64,6 +64,53 @@ namespace VNExos.API.Migrations
 
                     b.ToTable("Languages");
                 });
+
+            modelBuilder.Entity("VNExos.Domain.Entities.Translation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Origin")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Translate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId", "Origin")
+                        .IsUnique();
+
+                    b.ToTable("Translations");
+                });
+
+            modelBuilder.Entity("VNExos.Domain.Entities.Translation", b =>
+                {
+                    b.HasOne("VNExos.Domain.Entities.Language", "Language")
+                        .WithMany("Translations")
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("VNExos.Domain.Entities.Language", b =>
+                {
+                    b.Navigation("Translations");
+                });
 #pragma warning restore 612, 618
         }
     }

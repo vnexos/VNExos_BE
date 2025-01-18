@@ -30,16 +30,47 @@ namespace VNExos.API.Migrations
                     table.PrimaryKey("PK_Languages", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Translations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LanguageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Origin = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    Translate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Translations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Translations_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Languages_Code",
                 table: "Languages",
                 column: "Code",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Translations_LanguageId_Origin",
+                table: "Translations",
+                columns: new[] { "LanguageId", "Origin" },
                 unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Translations");
+
             migrationBuilder.DropTable(
                 name: "Languages");
         }
