@@ -9,15 +9,15 @@ namespace VNExos.Test;
 public class CommonRepositoryTests
 {
     [Fact]
-    public async void Create_Should_ReturnEntity_And_SaveARecordToData()
+    public async void Create_Should_SaveARecordToData_And_ReturnEntity()
     {
         // Arrange
         var dbContext = await LanguageRepositoryTests.GetContext();
         ACommonRepository<Language> repository = new LanguageRepository(dbContext);
         var sample = new Language
         {
-            Code = "vi-US",
-            Name = "Tchiếng Dziệt (Mỹ)",
+            Code = "te-ST",
+            Name = "Test (Language)",
             FlagUrl = "https://vnexos.com/flags/en-in.png",
             RightToLeft = true,
         };
@@ -44,7 +44,7 @@ public class CommonRepositoryTests
         // Assert
         result.Should().NotBeNull();
         result.Should().BeOfType<Language>();
-        result?.Code.Should().Be("vi-us");
+        result?.Code.Should().Be("te-ST");
     }
 
     [Fact]
@@ -65,12 +65,12 @@ public class CommonRepositoryTests
     }
 
     [Theory]
-    [InlineData("vi-vn", null, null, null, null)]
-    [InlineData(null, "Tiếng Việt (3 que)", null, null, null)]
+    [InlineData("te-ST", null, null, null, null)]
+    [InlineData(null, "Test (Language)", null, null, null)]
     [InlineData(null, null, "https://vnexos.com/flags/ex-ex.png", null, null)]
     [InlineData(null, null, null, false, null)]
     [InlineData(null, null, null, null, false)]
-    [InlineData("vi-vn", "Tiếng Việt (3 que)", "https://vnexos.com/flags/ex-ex.png", false, false)]
+    [InlineData("te-ST", "Test (Language)", "https://vnexos.com/flags/ex-ex.png", false, false)]
     public async void Update_Should_ChangeTheValueInsideRecord_And_ReturnEntity(string? code, string? name, string? flagUrl, bool? rtl, bool? isDefault)
     {
         // Arrange
@@ -106,9 +106,6 @@ public class CommonRepositoryTests
             result?.IsDefault.Should().Be(isDefault);
     }
 
-    /*
-     * !!! XÓA DỮ LIỆU LỖI KHỎI CUỘC ĐỜI !!!
-     */
     [Fact]
     public async void Delete_Should_RemoveRecordFromDatabase_And_ReturnEntity()
     {

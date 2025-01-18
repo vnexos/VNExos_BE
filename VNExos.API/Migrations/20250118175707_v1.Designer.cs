@@ -12,8 +12,8 @@ using VNExos.Domain.Presistence;
 namespace VNExos.API.Migrations
 {
     [DbContext(typeof(VNExosContext))]
-    [Migration("20241229100205_v2")]
-    partial class v2
+    [Migration("20250118175707_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,7 +93,8 @@ namespace VNExos.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LanguageId");
+                    b.HasIndex("LanguageId", "Origin")
+                        .IsUnique();
 
                     b.ToTable("Translations");
                 });
