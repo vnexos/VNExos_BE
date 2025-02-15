@@ -12,7 +12,7 @@ using VNExos.Domain.Presistence;
 namespace VNExos.API.Migrations
 {
     [DbContext(typeof(VNExosContext))]
-    [Migration("20241227232357_v1")]
+    [Migration("20250118175707_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -66,6 +66,53 @@ namespace VNExos.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Languages");
+                });
+
+            modelBuilder.Entity("VNExos.Domain.Entities.Translation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("LanguageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Origin")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Translate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId", "Origin")
+                        .IsUnique();
+
+                    b.ToTable("Translations");
+                });
+
+            modelBuilder.Entity("VNExos.Domain.Entities.Translation", b =>
+                {
+                    b.HasOne("VNExos.Domain.Entities.Language", "Language")
+                        .WithMany("Translations")
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("VNExos.Domain.Entities.Language", b =>
+                {
+                    b.Navigation("Translations");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,6 +5,7 @@ using VNExos.Infrastructure.Repositories;
 
 namespace VNExos.Test.Repository;
 
+// Test the language repository
 public class LanguageRepositoryTests
 {
     public static async Task<VNExosContext> GetContext()
@@ -51,8 +52,8 @@ public class LanguageRepositoryTests
             databaseContext.Languages.Add(new Language
             {
                 Id = Guid.Parse("3ac27301-7d21-462f-8cc9-3b72e637c10b"),
-                Code = "vi-us",
-                Name = "Tchiếng Dziệt (Mỹỷ)",
+                Code = "te-ST",
+                Name = "Test",
                 FlagUrl = "https://vnexos.com/flags/ex-ex.png",
                 RightToLeft = true,
             });
